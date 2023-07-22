@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prismadb from '@/lib/prismadb';
- 
+
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
@@ -83,17 +83,17 @@ export async function POST(
     return new NextResponse("Internal error", { status: 500 });
   }
 };
+
 export async function GET(
   req: Request,
-  { params }: { params: { storeId: string } }
+  { params }: { params: { storeId: string } },
 ) {
   try {
-    const {searchParams}=new URL(req.url)
-    const categoryId=searchParams.get('categoryId')|| undefined
-    const colorId=searchParams.get('colorId')|| undefined
-    const sizeId=searchParams.get('sizeId')|| undefined
-    const isFeatures=searchParams.get('isFeatures')|| undefined
-
+    const { searchParams } = new URL(req.url)
+    const categoryId = searchParams.get('categoryId') || undefined;
+    const colorId = searchParams.get('colorId') || undefined;
+    const sizeId = searchParams.get('sizeId') || undefined;
+    const isFeatures = searchParams.get('isFeatures');
 
     if (!params.storeId) {
       return new NextResponse("Store id is required", { status: 400 });
@@ -105,17 +105,17 @@ export async function GET(
         categoryId,
         colorId,
         sizeId,
-        isFeatures:isFeatures? true: undefined,
-        isArchived:false
+        isFeatures: isFeatures ? true : undefined,
+        isArchived: false,
       },
-      include:{
-        images:true,
-        category:true,
-        color:true,
-        size:true
+      include: {
+        images: true,
+        category: true,
+        color: true,
+        size: true,
       },
-      orderBy:{
-        createdAt:'desc'
+      orderBy: {
+        createdAt: 'desc',
       }
     });
   
