@@ -38,17 +38,12 @@ export const columns: ColumnDef<ProductColumn>[] = [
   },
   {
     accessorKey: "size",
-    header: "Size",
+    header: "Description",
   },
   {
     accessorKey: "color",
-    header: "Color",
-    cell:({row})=>(
-      <div className="flex items-center gap-x-2">
-          {row.original.color}
-          <div className="h-6 w-6 rounded-full" style={{backgroundColor:row.original.color}}/>
-      </div>
-    )
+    header: "Shopname",
+    
   },
   {
     accessorKey: "createdAt",
@@ -56,6 +51,7 @@ export const columns: ColumnDef<ProductColumn>[] = [
   },
   {
     id:'actions',
+    header:"Actions",
     cell:({row})=><CellAction data={row.original}/>
   }
 ]

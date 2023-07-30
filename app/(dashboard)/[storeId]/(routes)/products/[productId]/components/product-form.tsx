@@ -176,11 +176,11 @@ export const ProductForm:React.FC<ProductFormProps> = ({initialData,categories,c
                     )}/>
                     <FormField control={form.control} name="sizeId" render={({field})=>(
                         <FormItem>
-                            <FormLabel> Sizes </FormLabel>
+                            <FormLabel> Description </FormLabel>
                             <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
-                                    <SelectValue  defaultValue={field.value} placeholder="Select a Size"/>
+                                    <SelectValue  defaultValue={field.value} placeholder="Select a description"/>
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -194,7 +194,7 @@ export const ProductForm:React.FC<ProductFormProps> = ({initialData,categories,c
                     )}/>
                     <FormField control={form.control} name="colorId" render={({field})=>(
                         <FormItem>
-                            <FormLabel> Colors </FormLabel>
+                            <FormLabel> Shopname </FormLabel>
                             <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>

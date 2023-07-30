@@ -38,9 +38,9 @@ export const ColorForm:React.FC<colorFormProps> = ({initialData}) => {
         const [open,setOpen]=useState(false)
         const [loading,setLoading] =useState(false)
 
-        const title=initialData ? "Edit color" : "Create color"
-        const description=initialData ? "Edit a color" : "Add a new color"
-        const toastMessage=initialData ? "Color Updated" : "Color Created"
+        const title=initialData ? "Edit shop" : "Create shop"
+        const description=initialData ? "Edit a shop" : "Add a new shop"
+        const toastMessage=initialData ? "shop Updated" : "shop Created"
         const action=initialData ? "Save Changes" : "Create"
 
 
@@ -77,10 +77,10 @@ export const ColorForm:React.FC<colorFormProps> = ({initialData}) => {
             await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`)
             router.refresh()
             router.push(`/${params.storeId}/colors`)
-            toast.success('Color deleted.')
+            toast.success('Shop deleted.')
 
         }catch(error){
-            toast.error('Please delete all the products in this color.')
+            toast.error('Please delete all the products from this shop.')
         }finally{
             setLoading(false)
             setOpen(false)

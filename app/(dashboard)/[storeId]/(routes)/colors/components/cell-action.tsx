@@ -24,7 +24,7 @@ export const CellAction:React.FC<CellActionProps>=({data})=>{
 
     const onCopy=(id:string)=>{
         navigator.clipboard.writeText(id)
-        toast.success("Color Id Copied")
+        toast.success("Shop Id Copied")
     }
 
     const[loading,setLoading]=useState(false)
@@ -36,12 +36,12 @@ export const CellAction:React.FC<CellActionProps>=({data})=>{
             await axios.delete(`/api/${params.storeId}/colors/${data.id}`)
             router.refresh()
            
-            toast.success('Color deleted.')
+            toast.success('Shop deleted.')
 
         }catch(error){
             console.log(error);
             
-            toast.error('Please remove all the products using this colors.')
+            toast.error('Please remove all the products from this shop.')
         }finally{
             setLoading(false)
             setOpen(false)

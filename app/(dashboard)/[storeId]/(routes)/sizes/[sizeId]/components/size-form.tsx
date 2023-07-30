@@ -38,9 +38,9 @@ export const SizeForm:React.FC<SizeFormProps> = ({initialData}) => {
         const [open,setOpen]=useState(false)
         const [loading,setLoading] =useState(false)
 
-        const title=initialData ? "Edit Size" : "Create Size"
-        const description=initialData ? "Edit a Size" : "Add a new Size"
-        const toastMessage=initialData ? "Size Updated" : "Size Created"
+        const title=initialData ? "Edit description" : "Create description"
+        const description=initialData ? "Edit a description" : "Add a new description"
+        const toastMessage=initialData ? "description Updated" : "description Created"
         const action=initialData ? "Save Changes" : "Create"
 
 
@@ -77,10 +77,10 @@ export const SizeForm:React.FC<SizeFormProps> = ({initialData}) => {
             await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`)
             router.refresh()
             router.push(`/${params.storeId}/sizes`)
-            toast.success('Size deleted.')
+            toast.success('Description deleted.')
 
         }catch(error){
-            toast.error('Please delete all the products in this size.')
+            toast.error('Please delete all the products using this Description.')
         }finally{
             setLoading(false)
             setOpen(false)
@@ -106,22 +106,14 @@ export const SizeForm:React.FC<SizeFormProps> = ({initialData}) => {
                 <div className="grid grid-cols-3 gap-8">
                     <FormField control={form.control} name='name' render={({field})=>(
                         <FormItem>
-                            <FormLabel>Name </FormLabel>
+                            <FormLabel>Description </FormLabel>
                             <FormControl>
                                 <Input disabled={loading} placeholder="Size name" {...field}/>
                             </FormControl>
                             <FormMessage/>
                         </FormItem>
                     )}/>
-                    <FormField control={form.control} name='value' render={({field})=>(
-                        <FormItem>
-                            <FormLabel>Value </FormLabel>
-                            <FormControl>
-                                <Input disabled={loading} placeholder="size value" {...field}/>
-                            </FormControl>
-                            <FormMessage/>
-                        </FormItem>
-                    )}/>
+                    
                 </div>
                 <div>
                     <Button disabled={loading} className='ml-auto' type="submit">{action}</Button>

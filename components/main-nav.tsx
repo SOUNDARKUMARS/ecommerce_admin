@@ -27,12 +27,12 @@ export function MainNav({
         },
         {
             href:`/${params.storeId}/sizes`,
-            label:'Sizes',
+            label:'Descriptions',
             active:`/${params.storeId}/sizes`
         },
         {
           href:`/${params.storeId}/colors`,
-          label:'Colors',
+          label:'Shops',
           active:`/${params.storeId}/colors`
       },
         {
