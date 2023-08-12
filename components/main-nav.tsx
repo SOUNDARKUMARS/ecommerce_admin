@@ -26,11 +26,6 @@ export function MainNav({
             active:`/${params.storeId}/categories`
         },
         {
-            href:`/${params.storeId}/sizes`,
-            label:'Descriptions',
-            active:`/${params.storeId}/sizes`
-        },
-        {
           href:`/${params.storeId}/colors`,
           label:'Shops',
           active:`/${params.storeId}/colors`

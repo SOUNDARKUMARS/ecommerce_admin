@@ -58,7 +58,6 @@ model Size{
   id          String @id @default(uuid())
   storeId     String
   store       Store @relation("StoreToSize",fields: [storeId], references: [id])
-  products    Product[]
   name        String
   value       String
   createdAt   DateTime @default(now())
@@ -87,11 +86,10 @@ model Product{
   categoryId String
   category  Category @relation("CategoryToProducts",fields: [categoryId],references: [id])
   name String
+  description2 String
   price Decimal
   isFeatures Boolean @default(false)
   isArchived Boolean @default(false)
-  sizeId String
-  size Size @relation(fields: [sizeId],references: [id])
   colorId String
   color Color @relation(fields: [colorId],references: [id])
   images Image[]
@@ -102,7 +100,6 @@ model Product{
 
   @@index([storeId])  
   @@index([categoryId])  
-  @@index([sizeId])  
   @@index([colorId])  
 }
 

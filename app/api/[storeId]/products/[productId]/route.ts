@@ -19,7 +19,6 @@ export async function GET(
       include: {
         images: true,
         category: true,
-        size: true,
         color: true,
       }
     });
@@ -80,7 +79,7 @@ export async function PATCH(
 
     const body = await req.json();
 
-    const { name, price, categoryId, images, colorId, sizeId, isFeatures, isArchived } = body;
+    const { name,description2, price, categoryId, images, colorId, isFeatures, isArchived } = body;
 
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 403 });
@@ -92,6 +91,9 @@ export async function PATCH(
 
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
+    }
+    if (!description2) {
+      return new NextResponse("Description is required", { status: 400 });
     }
 
     if (!images || !images.length) {
@@ -110,9 +112,6 @@ export async function PATCH(
       return new NextResponse("Color id is required", { status: 400 });
     }
 
-    if (!sizeId) {
-      return new NextResponse("Size id is required", { status: 400 });
-    }
 
     const storeByUserId = await prismadb.store.findFirst({
       where: {
@@ -131,10 +130,10 @@ export async function PATCH(
       },
       data: {
         name,
+        description2,
         price,
         categoryId,
         colorId,
-        sizeId,
         images: {
           deleteMany: {},
         },
